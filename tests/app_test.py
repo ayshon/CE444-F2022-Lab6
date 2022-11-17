@@ -1,5 +1,4 @@
 import pytest
-import os
 from pathlib import Path
 import json
 
@@ -75,6 +74,7 @@ def test_messages(client):
     assert b"&lt;Hello&gt;" in rv.data
     assert b"<strong>HTML</strong> allowed here" in rv.data
 
+
 def test_search(client):
     """Ensure that user can search messages"""
     login(client, app.config["USERNAME"], app.config["PASSWORD"])
@@ -88,11 +88,12 @@ def test_search(client):
         data=dict(title="Yo", text="This is a new test"),
         follow_redirects=True,
     )
-    rv = client.get('/search/?query=yo')
+    rv = client.get("/search/?query=yo")
     assert b"Yo" in rv.data
     assert b"This is a new test" in rv.data
     assert b"&lt;Hello&gt;" not in rv.data
     assert b"<strong>HTML</strong> allowed here" not in rv.data
+
 
 def test_delete_message(client):
     """Ensure the messages are being deleted"""
@@ -103,6 +104,7 @@ def test_delete_message(client):
     rv = client.get("/delete/1")
     data = json.loads(rv.data)
     assert data["status"] == 1
+
 
 def test_delete_message_warning(client):
     """Ensure the warning message appears when user tries to delete a message without being logged in"""
