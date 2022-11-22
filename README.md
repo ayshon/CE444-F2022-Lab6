@@ -1,6 +1,6 @@
 # ECE444-F2022-Lab6
 
-Completed by following https://github.com/mjhea0/flaskr-tdd.
+This repository was created by Sean Llera and completed by following https://github.com/mjhea0/flaskr-tdd.
 
 # Test Cases from Group Project
 
